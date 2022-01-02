@@ -425,9 +425,8 @@ function App() {
               color: "var(--primary-text)",
             }}
           >
-            We have set the gas limit to {CONFIG.GAS_LIMIT} for the contract to
-            successfully mint your NFT. We recommend that you don't lower the
-            gas limit.
+            There is a small fee to claim your NFT of {CONFIG.GAS_LIMIT}. It is
+            recommended that you don't lower the gas limit.
           </s.TextDescription>
         </s.Container>
       </s.Container>
