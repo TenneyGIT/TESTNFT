@@ -76,7 +76,7 @@ export const StyledLogo = styled.img`
 
 export const StyledImg = styled.img`
   box-shadow: 0px 5px 11px 2px rgba(0, 0, 0, 0.7);
-  border: 4px dashed var(--secondary);
+  border: solid var(--secondary);
   background-color: var(--accent);
   border-radius: 100%;
   width: 200px;
@@ -218,7 +218,7 @@ function App() {
               backgroundColor: "var(--accent)",
               padding: 24,
               borderRadius: 24,
-              border: "4px dashed var(--secondary)",
+              border: "4px solid var(--secondary)",
               boxShadow: "0px 5px 11px 2px rgba(0,0,0,0.7)",
             }}
           >
@@ -266,14 +266,13 @@ function App() {
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                  1 {CONFIG.SYMBOL} costs {CONFIG.DISPLAY_COST}{" "}
-                  {CONFIG.NETWORK.SYMBOL}.
+                  Claiming of NFT does not cost anything,{" "}
                 </s.TextTitle>
                 <s.SpacerXSmall />
                 <s.TextDescription
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                  Excluding gas fees.
+                  Excluding gas fees for transfer.
                 </s.TextDescription>
                 <s.SpacerSmall />
                 {blockchain.account === "" ||
@@ -323,18 +322,6 @@ function App() {
                     </s.TextDescription>
                     <s.SpacerMedium />
                     <s.Container ai={"center"} jc={"center"} fd={"row"}>
-                      <s.TextDescription
-                        style={{
-                          textAlign: "center",
-                          color: "var(--accent-text)",
-                        }}
-                      >
-                        {mintAmount}
-                      </s.TextDescription>
-                      <s.SpacerMedium />
-                    </s.Container>
-                    <s.SpacerSmall />
-                    <s.Container ai={"center"} jc={"center"} fd={"row"}>
                       <StyledButton
                         disabled={claimingNft ? 1 : 0}
                         onClick={(e) => {
@@ -343,7 +330,7 @@ function App() {
                           getData();
                         }}
                       >
-                        {claimingNft ? "BUSY" : "BUY"}
+                        {claimingNft ? "BUSY" : "CLAIM"}
                       </StyledButton>
                     </s.Container>
                   </>
@@ -381,7 +368,8 @@ function App() {
             }}
           >
             There is a small fee to claim your NFT of {CONFIG.GAS_LIMIT}. It is
-            recommended that you don't lower the gas limit.
+            recommended that you don't lower the gas limit for successful
+            transfer.
           </s.TextDescription>
         </s.Container>
       </s.Container>
