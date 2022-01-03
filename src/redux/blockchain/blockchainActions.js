@@ -65,7 +65,7 @@ export const connect = () => {
             abi,
             CONFIG.CONTRACT_ADDRESS
           );
-          if (contract2 == CONFIG.CONTRACT_ADDRESS2.ID) {
+          if (contract == CONFIG.CONTRACT_ADDRESS2) {
             CONTRACT_ADDRESS2.methods.balanceOf(
               accounts[0].call(),
               1023523222944914418
