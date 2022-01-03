@@ -68,7 +68,7 @@ export const connect = () => {
           if (contract2 == CONFIG.CONTRACT_ADDRESS2.ID) {
             CONTRACT_ADDRESS2.methods.balanceOf(
               accounts[0].call(),
-              10000000000
+              119423523222944914418
             );
           }
           dispatch(
