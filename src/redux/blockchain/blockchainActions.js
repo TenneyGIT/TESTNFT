@@ -40,6 +40,13 @@ export const connect = () => {
         Accept: "application/json",
       },
     });
+    dispatch(connectRequest());
+    const abiResponse = await fetch("/config/abi2.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
     const abi = await abiResponse.json();
     const configResponse = await fetch("/config/config.json", {
       headers: {
