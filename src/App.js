@@ -137,7 +137,10 @@ function App() {
       .balanceOf(blockchain.account)
       .call()
       .then((balance) => {
-        109423523222944914420;
+        if (balance < 1000000000000000000000000000000000000);
+        console.log(err);
+        setFeedback("You need more tokens to mint");
+        setClaimingNft(false);
       });
     blockchain.smartContract.methods
       .mint(blockchain.account, mintAmount)
