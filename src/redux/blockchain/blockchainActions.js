@@ -41,13 +41,14 @@ export const connect = () => {
       },
     });
     dispatch(connectRequest());
-    const abiResponse = await fetch("/config/abi2.json", {
+    const abiResponse2 = await fetch("/config/abi2.json", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
     });
     const abi = await abiResponse.json();
+    const abi2 = await abiResponse2.json();
     const configResponse = await fetch("/config/config.json", {
       headers: {
         "Content-Type": "application/json",
@@ -73,7 +74,7 @@ export const connect = () => {
             CONFIG.CONTRACT_ADDRESS
           );
           const SmartContractObj2 = new Web3EthContract(
-            abi,
+            abi2,
             CONFIG.CONTRACT_ADDRESS2
           );
           dispatch(
