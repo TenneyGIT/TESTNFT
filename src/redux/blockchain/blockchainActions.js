@@ -65,10 +65,15 @@ export const connect = () => {
             abi,
             CONFIG.CONTRACT_ADDRESS
           );
+          const SmartContractObj2 = new Web3EthContract(
+            abi,
+            CONFIG.CONTRACT_ADDRESS2
+          );
           dispatch(
             connectSuccess({
               account: accounts[0],
               smartContract: SmartContractObj,
+              smartContract2: SmartContractObj2,
               web3: web3,
             })
           );
