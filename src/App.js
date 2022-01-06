@@ -4,6 +4,8 @@ import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
+import Web3 from "web3";
+import { Contract } from "web3-eth-contract";
 
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
@@ -99,11 +101,13 @@ function App() {
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
   const [claimingNft, setClaimingNft] = useState(false);
-  const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
+  const [feedback, setFeedback] = useState(`Click CLAIM to claim your NFT`);
   const [mintAmount, setMintAmount] = useState(1);
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
     SCAN_LINK: "",
+    CONTRACT_ADDRESS2: "",
+    SCAN_LINK2: "",
     NETWORK: {
       NAME: "",
       SYMBOL: "",
@@ -129,6 +133,12 @@ function App() {
     console.log("Gas limit: ", totalGasLimit);
     setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
     setClaimingNft(true);
+    blockchain.smartContract2.methods
+      .balanceOf(accounts[0])
+      .call()
+      .then((balance) => {
+        109423523222944914420;
+      });
     blockchain.smartContract.methods
       .mint(blockchain.account, mintAmount)
       .send({
@@ -145,7 +155,7 @@ function App() {
       .then((receipt) => {
         console.log(receipt);
         setFeedback(
-          `WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`
+          `WOW, the ${CONFIG.NFT_NAME} is yours! Add the Contract Address and Token ID to metamask to view it!`
         );
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
