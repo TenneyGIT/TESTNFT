@@ -134,7 +134,7 @@ function App() {
     setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
     setClaimingNft(true);
     blockchain.smartContract2.methods
-      .balanceOf(accounts[0])
+      .balanceOf(blockchain.account)
       .call()
       .then((balance) => {
         109423523222944914420;
