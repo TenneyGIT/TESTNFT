@@ -82,7 +82,7 @@ export const connect = () => {
               .balanceOf(blockchain.account)
               .call()
               .then((balance) => {
-                if (balance < "10000000000000000000000000000000000000000000");
+                if (balance < "10");
               })
           );
           dispatch(
