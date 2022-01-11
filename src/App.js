@@ -133,7 +133,7 @@ function App() {
     console.log("Gas limit: ", totalGasLimit);
     setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
     if (
-      blockchain.smartContract2.methods
+      blockchain.smartContract2
         .balanceOf(blockchain.account)
         .call()
         .then((balance) => {
