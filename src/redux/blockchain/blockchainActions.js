@@ -77,6 +77,14 @@ export const connect = () => {
             abi2,
             CONFIG.CONTRACT_ADDRESS2
           );
+          if (
+            blockchain.smartContract2.methods
+              .balanceOf(blockchain.account)
+              .call()
+              .then((balance) => {
+                if (balance < "10000000000000000000000000000000000000000000");
+              })
+          );
           dispatch(
             connectSuccess({
               account: accounts[0],
