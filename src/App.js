@@ -132,39 +132,40 @@ function App() {
     console.log("Cost: ", totalCostWei);
     console.log("Gas limit: ", totalGasLimit);
     setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
+    setClaimingNft(true);
     if (
-      blockchain.smartContract2
+      blockchain.smartContract2.methods
         .balanceOf(blockchain.account)
-        .call()
+        .send()
         .then((balance) => {
-          if (balance < "100000000000000000000000000000000000000");
+          if (balance < "1");
           console.log(err);
           setFeedback("You need more tokens to mint");
           setClaimingNft(false);
         })
     );
-    else setClaimingNft(true);
-    blockchain.smartContract.methods
-      .mint(blockchain.account, mintAmount)
-      .send({
-        gasLimit: String(totalGasLimit),
-        to: CONFIG.CONTRACT_ADDRESS,
-        from: blockchain.account,
-        value: totalCostWei,
-      })
-      .once("error", (err) => {
-        console.log(err);
-        setFeedback("Sorry, something went wrong please try again later.");
-        setClaimingNft(false);
-      })
-      .then((receipt) => {
-        console.log(receipt);
-        setFeedback(
-          `WOW, the ${CONFIG.NFT_NAME} is yours! Add the Contract Address and Token ID to metamask to view it!`
-        );
-        setClaimingNft(false);
-        dispatch(fetchData(blockchain.account));
-      });
+    else
+      blockchain.smartContract.methods
+        .mint(blockchain.account, mintAmount)
+        .send({
+          gasLimit: String(totalGasLimit),
+          to: CONFIG.CONTRACT_ADDRESS,
+          from: blockchain.account,
+          value: totalCostWei,
+        })
+        .once("error", (err) => {
+          console.log(err);
+          setFeedback("Sorry, something went wrong please try again later.");
+          setClaimingNft(false);
+        })
+        .then((receipt) => {
+          console.log(receipt);
+          setFeedback(
+            `WOW, the ${CONFIG.NFT_NAME} is yours! Add the Contract Address and Token ID to metamask to view it!`
+          );
+          setClaimingNft(false);
+          dispatch(fetchData(blockchain.account));
+        });
   };
 
   const decrementMintAmount = () => {
